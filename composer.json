@@ -1,0 +1,22 @@
+{
+    "name": "kavanatsu/pnss-1",
+    "description": "Description",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kavanatsu",
+            "email": "calcifergemini@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+			"php": "^7.4 | ^8.0"
+		},
+		"autoload": {
+			"psr-4": {
+				"Src\\": "core/Src/",
+				"": "app/"
+			}
+		}
+}
