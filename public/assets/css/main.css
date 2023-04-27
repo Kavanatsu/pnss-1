@@ -1,0 +1,25 @@
+@font-face {
+    font-family: Filandica-R;
+    src: url(../fonts/Finlandica-Regular.ttf);
+}
+
+* {
+    margin: 0 auto;
+    padding: 0 auto;
+    font-family: Filandica-R;
+}
+
+nav {
+    width: 100%;
+    background-color: blue;
+    height: 15%;
+    padding: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+nav > a {
+    text-decoration: none;
+    color: black;
+    font-size: 4em;
+}

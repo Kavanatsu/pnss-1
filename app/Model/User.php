@@ -12,9 +12,9 @@ class User extends Model implements IdentityInterface
 
    public $timestamps = false;
    protected $fillable = [
-       'name',
        'login',
-       'password'
+       'password',
+       'email'
    ];
 
    protected static function booted()
@@ -28,7 +28,7 @@ class User extends Model implements IdentityInterface
    //Выборка пользователя по первичному ключу
    public function findIdentity(int $id)
    {
-       return self::where('id', $id)->first();
+       return self::where('ID_employee', $id)->first();
    }
 
    //Возврат первичного ключа

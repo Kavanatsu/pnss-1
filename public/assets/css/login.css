@@ -1,0 +1,50 @@
+@font-face {
+    font-family: Filandica-R;
+    src: url(../fonts/Finlandica-Regular.ttf);
+}
+
+* {
+    margin: 0 auto;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    padding: 40px;
+}
+
+form {
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    padding-top: 0;
+    border-radius: 20px;
+    font-size: larger;
+    margin: 10px;
+}
+
+form h3 {
+    padding: 30px;
+}
+
+form > label {
+    padding: 10px;
+}
+
+form > label > input {
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+form > button {
+    padding: 10px;
+    border: none;
+    border-radius: 30px;
+    width: 8em;
+    font-family: Filandica-R;
+    margin-top: 10px;
+}
