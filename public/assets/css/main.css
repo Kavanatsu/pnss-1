@@ -9,17 +9,37 @@
     font-family: Filandica-R;
 }
 
-nav {
+body {
+    background-image: url(../img/main.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
     width: 100%;
-    background-color: blue;
-    height: 15%;
-    padding: 40px;
-    display: flex;
-    flex-direction: row;
+    color: white;
 }
 
-nav > a {
-    text-decoration: none;
-    color: black;
-    font-size: 4em;
+header {
+    width: 100%;
+    background-color:rgba(0,0,0,0.7);
+    height: 15%;
+    padding: 40px 0;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    max-width: 1600px;
+}
+
+nav > h1 {
+    font-size: 2em;  
+    opacity: 1;
+}
+
+.logout {
+    color: white;
+}
+
+main {
+    margin-top: 6em;
 }

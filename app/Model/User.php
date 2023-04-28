@@ -14,7 +14,8 @@ class User extends Model implements IdentityInterface
    protected $fillable = [
        'login',
        'password',
-       'email'
+       'email',
+       'role'
    ];
 
    protected static function booted()
@@ -34,13 +35,19 @@ class User extends Model implements IdentityInterface
    //Возврат первичного ключа
    public function getId(): int
    {
-       return $this->id;
+       return $this->ID_employee;
    }
 
    //Возврат аутентифицированного пользователя
    public function attemptIdentity(array $credentials)
    {
        return self::where(['login' => $credentials['login'],
-           'password' => md5($credentials['password'])])->first();
+           'password' => ($credentials['password'])])->first();
+   }
+
+   //Есть ли роль текущего пользователя в массиве ролей
+   public function hasRole($roles): bool
+   {
+       return in_array($this->role, $roles);
    }
 }

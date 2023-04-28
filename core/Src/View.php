@@ -10,6 +10,7 @@ class View
    private array $data = [];
    private string $root = '';
    private string $layout = '/layouts/main.php';
+//    private string $layoutMainPage = '/site/mainPage.php';
 
    public function __construct(string $view = '', array $data = [])
    {
@@ -34,6 +35,12 @@ class View
        return $this->root . $this->layout;
    }
 
+//    //Путь до файла с шаблоном мейн страницы
+//    private function getPathToMainPage(): string
+//    {
+//        return $this->root . $this->layoutMainPage;
+//    }
+
    //Путь до текущего шаблона
    private function getPathToView(string $view = ''): string
    {
@@ -41,6 +48,7 @@ class View
        return $this->getRoot() . "/$view.php";
    }
 
+   //рендер страниц на мейне
    public function render(string $view = '', array $data = []): string
    {
        $path = $this->getPathToView($view);
@@ -61,6 +69,28 @@ class View
        }
        throw new Exception('Error render');
    }
+
+//    //рендер таблиц
+//    public function renderMainPage(string $view = '', array $data = []): string
+//    {
+//        $path = $this->getPathToView($view);
+
+//        if (file_exists($this->getPathToMainPage()) && file_exists($path)) {
+
+//            //Импортирует переменные из массива в текущую таблицу символов
+//            extract($data, EXTR_PREFIX_SAME, '');
+
+//            //Включение буферизации вывода
+//            ob_start();
+//            require $path;
+//            //Помещаем буфер в переменную и очищаем его
+//            $contentmainpage = ob_get_clean();
+
+//            //Возвращаем собранную страницу
+//            return require($this->getPathToMainPage());
+//        }
+//        throw new Exception('Error render');
+//    }
 
    public function __toString(): string
    {

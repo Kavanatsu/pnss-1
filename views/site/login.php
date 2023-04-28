@@ -11,6 +11,7 @@
         ?>
         <form method="post">
             <h3>Авторизация</h3>
+            <h3 class="error"><?= $message ?? ''; ?></h3>
             <label>Логин <input type="text" name="login"></label>
             <label>Пароль <input type="password" name="password"></label>
             <button>Войти</button>

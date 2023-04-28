@@ -10,29 +10,15 @@ use Src\Auth\Auth;
 
 class Site
 {
-	// public function index(Request $request): string
-	// {
-	// 	$users = User::all()->get();
-	// 	return (new View())->render('site.post', ['posts' => $users]);
-	// }
-	
 	public function mainPage(): string
 	{
 		return new View('site.mainPage');
 	}
 
-   	// public function hello(): string
-	// {
-	// 	return new View('site.hello');
-	// }
-	 
-	// public function signup(Request $request): string
-	// {
-	// 	if ($request->method === 'POST' && User::create($request->all())) {
-	// 		app()->route->redirect('/go');
-	// 	}
-	// 	return new View('site.signup');
-	// }
+	public function adminPanel(): string
+	{
+		return new View('site.admin-panel');
+	}
 
 	public function login(Request $request): string
 	{
@@ -42,7 +28,11 @@ class Site
 		}
 		//Если удалось аутентифицировать пользователя, то редирект
 		if (Auth::attempt($request->all())) {
+			if (Auth::user()->role === 'admin'){
+				app()->route->redirect('/admin-panel');
+			} else {
 				app()->route->redirect('/main');
+			}
 		}
 		//Если аутентификация не удалась, то сообщение об ошибке
 		return new View('site.login', ['message' => 'Неправильные логин или пароль']);
@@ -51,6 +41,20 @@ class Site
 	public function logout(): void
 	{
 		Auth::logout();
-		app()->route->redirect('/hello');
+		app()->route->redirect('/login');
 	}
+	
+	// public function signup(Request $request): string
+	// {
+	// 	if ($request->method === 'POST' && User::create($request->all())) {
+	// 		app()->route->redirect('/go');
+	// 	}
+	// 	return new View('site.signup');
+	// }
+
+	// public function index(Request $request): string
+	// {
+	// 	$users = User::all()->get();
+	// 	return (new View())->render('site.post', ['posts' => $users]);
+	// }
 }

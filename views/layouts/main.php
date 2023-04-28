@@ -11,19 +11,19 @@
 <body>
 <header>
    <nav>
-        <h1>Кадровая служба<h1>
-       <?php
-       if (app()->auth::check()):
-       ?>
-        <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
-       <?php
-       endif;
-       ?>
+      <h1>Кадровая служба<h1>
+      <?php
+      if (app()->auth::check()):
+      ?>
+      <h2>Здравствуйте, <?= app()->auth::user()->login ?><h2>
+      <a href="<?= app()->route->getUrl('/logout') ?>" class="logout">Выход</a>
+      <?php
+      endif;
+      ?>
    </nav>
 </header>
 <main>
    <?= $content ?? '' ?>
 </main>
-
 </body>
 </html>

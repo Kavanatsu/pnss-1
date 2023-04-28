@@ -2,10 +2,21 @@
 
 use Src\Route;
 
-// Route::add('GET', '/hello', [Controller\Site::class, 'hello'])
-//    ->middleware('auth');
-Route::add('GET', '/main', [Controller\Site::class, 'mainPage'])
-   ->middleware('auth');
 Route::add(['GET', 'POST'], '/login', [Controller\Site::class, 'login']);
 Route::add('GET', '/logout', [Controller\Site::class, 'logout']);
+
+Route::add('GET', '/main', [Controller\Site::class, 'mainPage'])
+   ->middleware('auth');
+Route::add(['GET', 'POST'], '/admin-panel', [Controller\Site::class, 'adminPanel'])
+   ->middleware('auth', 'role:admin');
+
+Route::add('GET', '/employees', [Controller\Employees::class, 'showEmployees'])
+   ->middleware('auth');
+Route::add('GET', '/positionChanges', [Controller\PositionChanges::class, 'showPositionChanges'])
+   ->middleware('auth');
+// Route::add('GET', '/employees', [Controller\Employees::class, 'showEmployees'])
+//    ->middleware('auth');
+// Route::add('GET', '/employees', [Controller\Employees::class, 'showEmployees'])
+//    ->middleware('auth');
+
 
