@@ -3,6 +3,8 @@
 namespace Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
 
@@ -50,4 +52,16 @@ class User extends Model implements IdentityInterface
    {
        return in_array($this->role, $roles);
    }
+
+   //Связь с таблицей работников
+   public function employee(): BelongsTo
+    {
+        return $this->belongsTo(Employee::class,  'ID_employee', 'ID_employee');
+    }
+
+    //Связь с таблицей смены должности
+    public function positionChanges()
+    {
+        return $this->hasMany(PositionChange::class, 'ID_employee', 'ID_user_changer');
+    }
 }

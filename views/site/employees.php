@@ -1,5 +1,5 @@
 <head>
-   <link rel="stylesheet" href="/pnss-1/public/assets/css/work.css">
+   <link rel="stylesheet" href="/pnss-1/public/assets/css/table.css">
 </head>
 <table>
     <tr>
@@ -14,7 +14,8 @@
             echo '<th>' . $employee->surname . '' . $employee->name . '' . $employee->patronymic .'</th>';
             echo '<th>' . $employee->gender .'</th>';
             echo '<th>' . $employee->position .'</th>';
-        } ?>
+        } 
+        ?>
     </tr>
 </table>
 

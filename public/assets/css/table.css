@@ -1,0 +1,66 @@
+@font-face {
+    font-family: Filandica-R;
+    src: url(../fonts/Finlandica-Regular.ttf);
+}
+
+* {
+    margin: 0 auto;
+    padding: 0 auto;
+}
+
+body {
+    color: white;
+    font-family: Filandica-R;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+a {
+    color: white;
+    font-family: Filandica-R;
+    background-color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    width: 12%;
+    max-width: 15%;
+    transition: .3s linear;
+}
+
+a:hover {
+    background-color: white;
+    color: black;
+}
+
+table {
+    font-size: 20px;
+    max-width: 70%;
+    background-color: rgba(0, 0, 0, .8);
+    width: 70%;
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 15px;
+}
+
+th {
+    font-weight: normal;
+    color: white;
+    border-bottom: 2px solid white;
+    padding: 10px 8px;
+}
+
+td {
+    color: rgb(196, 195, 195);
+    padding: 9px 8px;
+    transition: .3s linear;
+}
+
+tr:hover td {
+    color: rgb(255, 255, 255);
+}

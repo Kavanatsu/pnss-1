@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-// use Model\Post;
+use Model\User;
 // use Model\User;
 use Src\View;
 use Src\Request;
@@ -17,7 +17,8 @@ class Site
 
 	public function adminPanel(): string
 	{
-		return new View('site.admin-panel');
+		$users = User::all();
+        return (new View())->render('site.admin-panel', ['users' => $users]);
 	}
 
 	public function login(Request $request): string

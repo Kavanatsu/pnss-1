@@ -3,6 +3,7 @@
 namespace Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Address extends Model
@@ -19,6 +20,17 @@ class Address extends Model
       'apartment'
    ];
 
-   
+   protected static function booted()
+   {
+       static::created(function ($address) {
+           $address->save();
+       });
+   }
+
+   //Связь с таблицей работников по адресу
+   public function employees()
+   {
+    return $this->hasMany(Employee::class, 'ID_address', 'ID_address');
+   }
 
 }

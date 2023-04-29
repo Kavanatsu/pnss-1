@@ -6,7 +6,6 @@
 * {
     margin: 0 auto;
     padding: 0 auto;
-    font-family: Filandica-R;
 }
 
 body {
@@ -16,6 +15,7 @@ body {
     background-color: black;
     width: 100%;
     color: white;
+    font-family: Filandica-R;
 }
 
 header {
@@ -43,3 +43,4 @@ nav > h1 {
 main {
     margin-top: 6em;
 }
+

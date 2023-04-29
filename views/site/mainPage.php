@@ -1,5 +1,5 @@
 <head>
-   <link rel="stylesheet" href="/pnss-1/public/assets/css/work.css">
+   <link rel="stylesheet" href="/pnss-1/public/assets/css/table.css">
 </head>
 <section>
 
