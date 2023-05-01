@@ -14,7 +14,6 @@
             foreach ($users as $user) { ?>
             <tr>
                 <?php
-                    echo '<td>' . $user->ID_employee . '</td>';
                     echo '<td>' . $user->login . '</td>';
                     echo '<td>' . $user->password .'</td>';
                     echo '<td>' . $user->role .'</td>';

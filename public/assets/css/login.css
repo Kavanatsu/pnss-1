@@ -71,3 +71,22 @@ form > button:hover {
     background-color: black;
     color: white;
 }
+
+div > a {
+	color: black;
+	font-family: Filandica-R;
+	background-color: white;
+	text-align: center;
+	text-decoration: none;
+	font-size: 20px;
+	padding: 10px;
+	border-radius: 20px;
+	width: 20%;
+	max-width: 15%;
+	transition: .3s linear;
+}
+
+div > a:hover {
+	background-color: black;
+	color: white;
+}

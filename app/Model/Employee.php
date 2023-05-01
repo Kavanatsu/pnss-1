@@ -5,6 +5,7 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
@@ -30,6 +31,24 @@ class Employee extends Model
        });
    }
 
+	 public function calculate_age($birthday) {
+		$birthday_timestamp = strtotime($birthday);
+		$age = date('Y') - date('Y', $birthday_timestamp);
+		if (date('md', $birthday_timestamp) > date('md')) {
+			$age--;
+		}
+		return $age;
+		}
+
+		public function calculate_average_age() {
+			$ageall = 0;
+			foreach ($employees as $employee) { 
+				$ageall += ($employee->calculate_age($employee->birthday));	
+			}
+			$average = $ageall/count($employees);
+			return $average;
+		}
+
    //Связь с таблицей пользователей
    public function user()
    {
@@ -39,7 +58,7 @@ class Employee extends Model
    //Связь с таблицей работников в подразделениях
    public function employeesInDivisions()
    {
-    return $this->hasMany(EmployeesInDivisions::class, 'ID_employee', 'ID_employee');
+    return $this->hasManyThrough(Division::class, EmployeeInDivision::class, 'ID_employee', 'ID_division');
    }
 
    //Связь с таблицей смены должности по ID

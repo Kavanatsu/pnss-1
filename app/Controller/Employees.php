@@ -10,7 +10,19 @@ class Employees
     public function showEmployees(): string
     {  
         $employees = Employee::all();
-        // var_dump(new View())->render('table.employees', ['employees' => $employees]);
         return (new View())->render('site.employees', ['employees' => $employees]);
     }
+
+		public function employeesAge(): string
+    {  
+        $employees = Employee::all();
+        return (new View())->render('site.employeesAge', ['employees' => $employees]);
+    }
+
+		public function createEmployee(): string
+    {  
+        $employees = Employee::all();
+        return (new View())->render('site.createEmployee', ['employees' => $employees]);
+    }
+
 }

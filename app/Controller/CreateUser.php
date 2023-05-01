@@ -3,6 +3,7 @@
 namespace Controller;
 
 use Model\User;
+use Model\Employee;
 use Src\View;
 use Src\Request;
 use Src\Auth\Auth;
