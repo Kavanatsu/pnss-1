@@ -18,8 +18,6 @@ Route::add('GET', '/employees', [Controller\Employees::class, 'showEmployees'])
 Route::add(['GET', 'POST'], '/createEmployee', [Controller\Employees::class, 'createEmployee'])
    ->middleware('auth');
 
-Route::add('GET', '/positionChanges', [Controller\PositionChanges::class, 'showPositionChanges'])
-   ->middleware('auth');
 Route::add('GET', '/addresses', [Controller\Addresses::class, 'showAddresses'])
    ->middleware('auth');
 Route::add('GET', '/employeesAge', [Controller\Employees::class, 'employeesAge'])

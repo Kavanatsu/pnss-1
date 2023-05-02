@@ -4,6 +4,7 @@ namespace Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Model;
 
 class Position extends Model
@@ -24,15 +25,11 @@ class Position extends Model
        });
    }
 
-   //Связь с таблицей смены должности по новой должности
-   public function positionsNew()
-   {
-    return $this->hasMany(PositionChange::class, 'ID_position', 'ID_position_new');
-   }
+   protected  $with = ['employee'];
 
-   //Связь с таблицей смены должности по старой должности
-   public function positionsOld()
+   //Связь с таблицей работников
+   public function employee()
    {
-    return $this->hasMany(PositionChange::class, 'ID_position', 'ID_position_old');
-   }
+    return $this->hasMany(Employee::class);
+   }  
 }

@@ -27,10 +27,12 @@ class Address extends Model
        });
    }
 
-   //Связь с таблицей работников по адресу
+   protected $with = ['employees'];
+
+   //Связь с таблицей работников
    public function employees()
    {
-    return $this->hasMany(Employee::class, 'ID_address', 'ID_address');
+    return $this->hasMany(Employee::class);
    }
 
 }

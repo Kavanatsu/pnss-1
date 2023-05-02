@@ -31,13 +31,13 @@ class User extends Model implements IdentityInterface
    //Выборка пользователя по первичному ключу
    public function findIdentity(int $id)
    {
-       return self::where('ID_employee', $id)->first();
+       return self::where('employee_id', $id)->first();
    }
 
    //Возврат первичного ключа
    public function getId(): int
    {
-       return $this->ID_employee;
+       return $this->employee_id;
    }
 
    //Возврат аутентифицированного пользователя
@@ -54,14 +54,8 @@ class User extends Model implements IdentityInterface
    }
 
    //Связь с таблицей работников
-   public function employee(): BelongsTo
+   public function employee()
     {
-        return $this->belongsTo(Employee::class,  'ID_employee', 'ID_employee');
+        return $this->belongsTo(Employee::class);
     }
-
-    //Связь с таблицей смены должности
-    public function positionChanges()
-    {
-        return $this->hasMany(PositionChange::class, 'ID_employee', 'ID_user_changer');
-    }
-	}
+}

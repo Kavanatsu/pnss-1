@@ -9,7 +9,7 @@ class Addresses
 {
     public function showAddresses(): string
     {  
-        $addresses = Address::all();
+        $addresses = Address::all()->toArray();
         return (new View())->render('site.addresses', ['addresses' => $addresses]);
     }
 }

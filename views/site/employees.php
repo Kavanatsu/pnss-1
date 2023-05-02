@@ -20,7 +20,7 @@
 								echo '<td>' . $employee->surname . ' ' . $employee->name . ' ' . $employee->patronymic .'</td>';
 								echo '<td>' . $employee->gender .'</td>';
 								echo '<td>' . $employee->employment_date .'</td>';
-								echo '<td>' . $employee->ID_position .'</td>';
+								echo '<td>' . $employee->position->name .'</td>';
 							?>
 						</tr>
 					<?php } ?> 

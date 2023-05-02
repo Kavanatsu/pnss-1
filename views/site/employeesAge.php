@@ -2,7 +2,9 @@
    <link rel="stylesheet" href="/pnss-1/public/assets/css/table.css">
 </head>
 <div>
-	<a href="<?= app()->route->getUrl('/main') ?>">Назад</a>
+	<div class="links">
+		<a href="<?= app()->route->getUrl('/main') ?>">Назад</a>
+	</div>
 	<div>
 		<h3>Средний возраст сотрудников: 
 		</h3>
