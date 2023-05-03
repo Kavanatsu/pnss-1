@@ -22,9 +22,22 @@ class Address extends Model
 
    protected static function booted()
    {
-       static::created(function ($address) {
-           $address->save();
-       });
+      static::created(function ($address) {
+        $address->save();
+				$address->employees->update(
+					[
+						'address_id' => $address->id
+					]);
+      });
+			// $closure = function(Address $address) {
+			// 	$address->employees->update(
+			// 		[
+			// 			'address_id' => $address->id
+			// 		]);
+			// };
+			// static::created($closure);
+			// self::updated($closure);
+			// parent::booted();
    }
 
    protected $with = ['employees'];

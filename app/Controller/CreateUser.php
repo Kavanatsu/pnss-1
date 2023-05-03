@@ -10,18 +10,18 @@ use Src\Auth\Auth;
 class CreateUser
 {
 
-public function createUser(Request $request): string
-{
-	$users = User::all();
+	public function createUser(Request $request): string
+	{
+		$users = User::all();
 
-	if ($request->method === 'GET') {
-		return (new View())->render('site.createUser', ['users' => $users]); 
-	}
+		if ($request->method === 'GET') {
+			return (new View())->render('site.createUser', ['users' => $users]); 
+		}
 
-	if ($request->method === 'POST' && User::create($request->all())) {
-		app()->route->redirect('/admin-panel');
+		if ($request->method === 'POST' && User::create($request->all())) {
+			app()->route->redirect('/admin-panel');
+		}
+		
 	}
-	
-}
 
 }

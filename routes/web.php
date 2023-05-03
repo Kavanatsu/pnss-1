@@ -17,10 +17,13 @@ Route::add('GET', '/employees', [Controller\Employees::class, 'showEmployees'])
    ->middleware('auth');
 Route::add(['GET', 'POST'], '/createEmployee', [Controller\Employees::class, 'createEmployee'])
    ->middleware('auth');
+Route::add('GET', '/employeesAge', [Controller\Employees::class, 'employeesAge'])
+   ->middleware('auth');
 
 Route::add('GET', '/addresses', [Controller\Addresses::class, 'showAddresses'])
    ->middleware('auth');
-Route::add('GET', '/employeesAge', [Controller\Employees::class, 'employeesAge'])
+Route::add(['GET', 'POST'], '/createAddress', [Controller\Addresses::class, 'createAddress'])
    ->middleware('auth');
+
 
 

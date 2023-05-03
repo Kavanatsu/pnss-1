@@ -4,6 +4,7 @@
 <div>
 	<div class="links">
 		<a href="<?= app()->route->getUrl('/main') ?>">Назад</a>
+		<a href="<?= app()->route->getUrl('/createAddress') ?>">Добавить адрес</a>
 	</div>
 	<table>
 		<tr>

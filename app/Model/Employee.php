@@ -21,6 +21,7 @@ class Employee extends Model
       'birthday',
       'employment_date',
       'dismissal_date',
+			'address_id'
    ];
 
    protected static function booted()
