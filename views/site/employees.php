@@ -5,6 +5,7 @@
 	<div class="links">
 		<a href="<?= app()->route->getUrl('/main') ?>">Назад</a>
 		<a href="<?= app()->route->getUrl('/createEmployee') ?>">Создать работника</a>
+		<a href="<?= app()->route->getUrl('/addresses')?>">Адреса сотрудников</a>
 	</div>
 	<table>
 			<tr>

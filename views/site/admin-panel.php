@@ -3,6 +3,7 @@
 </head>
 <div>
     <div class="links">
+        <a href="<?= app()->route->getUrl('/main') ?>">Главная страница</a>
         <a href="<?= app()->route->getUrl('/createUser') ?>">Создать пользователя</a>
     </div>
     <table>

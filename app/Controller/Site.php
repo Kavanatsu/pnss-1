@@ -18,7 +18,7 @@ class Site
 	public function adminPanel(): string
 	{
 		$users = User::all();
-        return (new View())->render('site.admin-panel', ['users' => $users]);
+		return (new View())->render('site.admin-panel', ['users' => $users]); 
 	}
 
 	public function login(Request $request): string

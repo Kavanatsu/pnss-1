@@ -12,14 +12,13 @@
 <header>
    <nav>
       <h1>Кадровая служба<h1>
-      <?php
-      if (app()->auth::check()):
-      ?>
-      <h2>Здравствуйте, <?= app()->auth::user()->login ?><h2>
-      <a href="<?= app()->route->getUrl('/logout') ?>" class="logout">Выход</a>
-      <?php
-      endif;
-      ?>
+      <?php if (app()->auth::check()): ?>
+         <h2>Здравствуйте, <?= app()->auth::user()->employee->name ?><h2>
+         <a href="<?= app()->route->getUrl('/logout') ?>" class="logout">Выход</a>
+         <?php if (app()->auth::user()->role === 'admin') { ?>
+            <a href="<?= app()->route->getUrl('/admin-panel') ?>" class="logout">Админ-панель</a>
+         <?php } ?>
+      <?php endif; ?>
    </nav>
 </header>
 <main>
