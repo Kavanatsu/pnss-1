@@ -3,7 +3,6 @@
 namespace Controller;
 
 use Model\User;
-// use Model\User;
 use Src\View;
 use Src\Request;
 use Src\Auth\Auth;
@@ -44,6 +43,29 @@ class Site
 		Auth::logout();
 		app()->route->redirect('/login');
 	}
+
+	public function updateUser(Request $request): string
+    {   
+        if ($request->method === 'GET') {
+          $users = User::where('id', $request->id)->first();
+        }
+
+        if ($request->method === 'POST') {
+          $payload = $request->all();
+          $users = User::where('id', $request->id)->update($payload);
+          app()->route->redirect('/admin-panel');
+        }
+
+        return (new View())->render('site.updateUser', ['users' => $users]);
+    }
+
+	public function deleteUser(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+        if ($user->delete()) {
+            app()->route->redirect('/admin-panel');
+        }
+    }
 	
 	// public function signup(Request $request): string
 	// {

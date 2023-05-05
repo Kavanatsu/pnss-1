@@ -17,7 +17,8 @@ class User extends Model implements IdentityInterface
        'login',
        'password',
        'email',
-       'role'
+       'role',
+       'employee_id'
    ];
 
    protected static function booted()
@@ -44,7 +45,7 @@ class User extends Model implements IdentityInterface
    public function attemptIdentity(array $credentials)
    {
        return self::where(['login' => $credentials['login'],
-           'password' => ($credentials['password'])])->first();
+           'password' => md5($credentials['password'])])->first();
    }
 
    //Есть ли роль текущего пользователя в массиве ролей

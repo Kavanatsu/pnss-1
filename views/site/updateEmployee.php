@@ -7,12 +7,12 @@
 			<a href="<?= app()->route->getUrl('/employees') ?>">Назад</a>
 		</div>
         <form method="post">
-            <h3>Создание нового работника</h3>
+            <h3>Изменение данных о работнике</h3>
             <h3 class="error"><?= $message ?? ''; ?></h3>
 			<h4>Данные работника</h4>
-			<label>Фамилия <input type="text" name="surname"></label>
-			<label>Имя <input type="text" name="name"></label>
-			<label>Отчество <input type="text" name="patronymic"></label>
+			<label>Фамилия <input type="text" name="surname" placeholder="<?= $employees->surname ?>"></label>
+			<label>Имя <input type="text" name="name" placeholder="<?= $employees->name ?>"></label>
+			<label>Отчество <input type="text" name="patronymic" placeholder="<?= $employees->patronymic ?>"></label>
 			<label>Пол 
 				<input type="radio" name="gender" id="M" value="М">
 				<label for="M">Мужской</label>
@@ -28,7 +28,7 @@
 					<?php } ?>
 				</select>
 			</label>
-			<button class="employee">Зарегистрировать</button>
+			<button class="employee">Изменить</button>
         </form>
     </div>
 </section>

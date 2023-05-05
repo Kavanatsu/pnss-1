@@ -21,7 +21,8 @@ class Employee extends Model
       'birthday',
       'employment_date',
       'dismissal_date',
-			'address_id'
+		'address_id',
+      'position_id'
    ];
 
    protected static function booted()
@@ -40,14 +41,14 @@ class Employee extends Model
 		return $age;
 	}
 
-		// public function calculate_average_age() {
-		// 	$ageall = 0;
-		// 	foreach ($employees as $employee) { 
-		// 		$ageall += ($employee->calculate_age($employee->birthday));	
-		// 	}
-		// 	$average = $ageall/count($employees);
-		// 	return $average;
-		// }
+	public function calculate_average_age($employees) {
+		$ageall = 0;
+		foreach ($employees as $employee) { 
+			$ageall += ($employee->calculate_age($employee->birthday));	
+		}
+		$average = $ageall/count($employees);
+		return $average;
+	}
 
    protected $with = ['user'];
    

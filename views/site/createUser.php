@@ -9,15 +9,15 @@
         <h3>Создание нового пользователя</h3>
         <h3 class="error"><?= $message ?? ''; ?></h3>
         <label>Имя 	
-			<input type="text" list="name" name="employee_id">
-				<datalist id="name">
-					<?php foreach ($users as $user) { ?>
-                   		<option> <?= $user->employee->surname . ' ' . $user->employee->name . ' ' . $user->employee->patronymic ?> </option>;
-					<?php } ?>
-				</datalist>	
+			<select name="employee_id">
+				<?php foreach ($employees as $employee) { ?>
+                   	<option value="<?= $employee->id ?>"> <?= $employee->surname . ' ' . $employee->name . ' ' . $employee->patronymic ?> </option>;
+				<?php } ?>
+			</select>	
 		</label>
         <label>Логин <input type="text" name="login"></label>
         <label>Пароль <input type="password" name="password"></label>
+		<label>Электронная почта <input type="email" name="email"></label>
 		<label for="role">Роль
 			<select name="role">
 				<option>user</option>

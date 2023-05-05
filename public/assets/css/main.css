@@ -84,3 +84,17 @@ section > div > a:hover {
 	background-color: white;
 }
 
+h1 > a {
+	color: rgb(214, 214, 214);
+	text-decoration: none;
+	padding: 10px;
+	border-radius: 20px;
+	width: 12%;
+	max-width: 15%;
+	transition: .3s linear;
+}
+
+h1 > a:hover {
+	color: white;
+}
+

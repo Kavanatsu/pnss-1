@@ -24,10 +24,6 @@ class Address extends Model
    {
       static::created(function ($address) {
         $address->save();
-				$address->employees->update(
-					[
-						'address_id' => $address->id
-					]);
       });
 			// $closure = function(Address $address) {
 			// 	$address->employees->update(

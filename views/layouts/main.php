@@ -11,7 +11,7 @@
 <body>
 <header>
    <nav>
-      <h1>Кадровая служба<h1>
+      <h1><a href="<?= app()->route->getUrl('/main') ?>">Кадровая служба</a><h1>
       <?php if (app()->auth::check()): ?>
          <h2>Здравствуйте, <?= app()->auth::user()->employee->name ?><h2>
          <a href="<?= app()->route->getUrl('/logout') ?>" class="logout">Выход</a>
