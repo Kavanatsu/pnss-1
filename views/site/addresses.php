@@ -16,10 +16,12 @@
 				<?php foreach ($address['employees'] as $el) { ?>
 					<tr>
 						<td><?= $el['surname'].' '.$el['name'].' '.$el['patronymic'] ?></td>
-						<?php if ($address['corps'] == NULL) { ?>
-							<td><?= $address['region'].', '.$address['locality'].', ул. '.$address['street'].' '.$address['house'].', кв. '.$address['apartment'] ?></td>
-						<?php } else { ?>
-							<td><?= $address['region'].', '.$address['locality'].', ул. '.$address['street'].' '.$address['house'].', корпус '.$address['corps'].', кв. '.$address['apartment'] ?></td>
+						<?php { ?>
+							<td><?= $address['region'].', '.$address['locality'].', ул. '.$address['street'].' '.$address['house']?>
+							<?php if($address['corps'] or $address['apartment'] !== NULL){
+								if($address['corps'] !== NULL){ echo ', корпус '.$address['corps'];} 
+								if($address['apartment'] !== NULL){ echo', кв. '.$address['apartment'];}
+								}?></td>
 						<?php } ?>
 						<td>
 							<button><a href="<?= app()->route->getUrl('/deleteAddress') . '?id=' . $address['id'] ?>">удалить</a></button>

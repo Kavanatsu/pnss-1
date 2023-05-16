@@ -23,7 +23,7 @@
 			<label>Улица <input type="text" name="street"></label>
 			<label>Дом <input type="text" name="house"></label>
 			<label>Корпус (необязательно) <input type="text" name="corps"></label>
-			<label>Квартира <input type="text" name="apartment"></label>
+			<label>Квартира (необязательно) <input type="text" name="apartment"></label>
 			<button class="employee">Добавить</button>
         </form>
     </div>

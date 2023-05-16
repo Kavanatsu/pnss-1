@@ -7,6 +7,7 @@ use Model\Address;
 use Model\Position;
 use Src\View;
 use Src\Request;
+use Src\Validator\Validator;
 
 class Employees
 {
@@ -27,12 +28,26 @@ class Employees
         $employees = Employee::all();
         $positions = Position::all();
 
-        if ($request->method === 'GET') {
-          return (new View())->render('site.createEmployee', ['employees' => $employees, 'positions' => $positions]);
-        }
-
         if ($request->method === 'POST') {
-          Employee::create([
+
+          $validator = new Validator($request->all(), [
+            'surname' => ['required', 'cyrillic'],
+            'name' => ['required', 'cyrillic'],
+            'patronymic' => ['required', 'cyrillic'],
+            'gender' => ['required'],
+            'birthday' => ['required'],
+            'employment_date' => ['required'],
+          ], [
+            'required' => 'Поле :field пусто',
+            'cyrillic' => 'Поле :field должно состоять из кириллицы'
+          ]);
+       
+          if($validator->fails()){
+            return new View('site.createEmployee',
+              ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE), 'employees' => $employees, 'positions' => $positions]);
+          }
+
+          if (Employee::create([
             'surname' => $request->surname,
             'name' => $request->name,
             'patronymic' => $request->patronymic,
@@ -40,9 +55,12 @@ class Employees
             'birthday' => $request->birthday,
             'employment_date' => $request->employment_date,
             'position_id' => $request->position_id
-          ]);
+          ])) {
             app()->route->redirect('/employees');
+          }
         }
+    
+        return (new View())->render('site.createEmployee', ['employees' => $employees, 'positions' => $positions]); 
     }
 
     public function updateEmployee(Request $request): string
