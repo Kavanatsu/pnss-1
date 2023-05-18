@@ -1,11 +1,8 @@
-<head>
-   <link rel="stylesheet" href="/pnss-1/public/assets/css/login.css">
-</head>
 <section>
-    <div>
 		<div class="links">
 			<a href="<?= app()->route->getUrl('/employees') ?>">Назад</a>
 		</div>
+		<div>
         <form method="post">
             <h3>Изменение данных о работнике</h3>
             <h3 class="error"><?= $message ?? ''; ?></h3>

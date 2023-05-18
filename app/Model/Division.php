@@ -4,6 +4,7 @@ namespace Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
 
 class Division extends Model
@@ -13,7 +14,7 @@ class Division extends Model
    public $timestamps = false;
    protected $fillable = [
       'name',
-      'type_division'
+      'type'
    ];
 
    protected static function booted()
@@ -23,10 +24,17 @@ class Division extends Model
        });
    }
 
-   //Связь с таблицей работников подразделений по подразделению
-   public function divisions()
+	 protected $with = ['employees'];
+
+   //Связь с таблицей работников подразделений
+   public function employees()
    {
-    return $this->hasMany(EmployeeInDivision::class, 'ID_division', 'ID_division');
+    return $this->hasMany(EmployeeInDivision::class);
+   }
+
+	 public function type()
+   {
+      return $this->belongsTo(DivisionType::class, 'division_type_id', 'id');
    }
 
 }

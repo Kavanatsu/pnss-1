@@ -17,7 +17,7 @@ Route::add(['GET', 'POST'], '/updateUser', [Controller\Site::class, 'updateUser'
 Route::add(['GET', 'POST'], '/deleteUser', [Controller\Site::class, 'deleteUser'])
    ->middleware('auth', 'role:admin');
 
-Route::add('GET', '/employees', [Controller\Employees::class, 'showEmployees'])
+Route::add(['GET', 'POST'], '/employees', [Controller\Employees::class, 'showEmployees'])
    ->middleware('auth');
 Route::add(['GET', 'POST'], '/createEmployee', [Controller\Employees::class, 'createEmployee'])
    ->middleware('auth');

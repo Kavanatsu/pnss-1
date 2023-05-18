@@ -10,17 +10,19 @@ class EmployeeInDivision extends Model
 {
    use HasFactory;
 
+	 protected $table = 'employee_in_divisions';
+
    public $timestamps = false;
 
-   //Связь с таблицей работников по работнику
-   public function employees(): BelongsTo
+   //Связь с таблицей работников
+   public function employees()
    {
-      return $this->belongsTo(Employee::class,  'ID_employee', 'ID_employee');
+      return $this->belongsTo(Employee::class);
    }
 
-   //Связь с таблицей подразделений по подразделению
-   public function divisions(): BelongsTo
+   //Связь с таблицей подразделений 
+   public function divisions()
    {
-      return $this->belongsTo(Division::class,  'ID_division', 'ID_division');
+      return $this->belongsTo(Division::class);
    }
 }

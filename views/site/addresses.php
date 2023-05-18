@@ -1,6 +1,3 @@
-<head>
-   <link rel="stylesheet" href="/pnss-1/public/assets/css/table.css">
-</head>
 <div>
 	<div class="links">
 		<a href="<?= app()->route->getUrl('/employees') ?>">Назад</a>

@@ -1,6 +1,3 @@
-<head>
-   <link rel="stylesheet" href="/pnss-1/public/assets/css/table.css">
-</head>
 <div>
 	<div class="links">
 		<a href="<?= app()->route->getUrl('/main') ?>">Назад</a>
@@ -13,7 +10,7 @@
 					$ageall += ($employee->calculate_age($employee->birthday));	
 				}
 				$average = $ageall/count($employees);
-				echo $average;
+				echo round($average, 1);
 			?>
 		</h3>
 	</div>

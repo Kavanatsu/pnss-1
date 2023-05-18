@@ -5,16 +5,64 @@ namespace Controller;
 use Model\Employee;
 use Model\Address;
 use Model\Position;
+use Model\Division;
+use Model\DivisionType;
+use Model\EmployeeInDivision;
 use Src\View;
 use Src\Request;
 use Src\Validator\Validator;
 
 class Employees
 {
-    public function showEmployees(): string
+    public function showEmployees(Request $request): string
     {  
         $employees = Employee::all();
-        return (new View())->render('site.employees', ['employees' => $employees]);
+				// $types = Division::all('type')->unique('type');
+				$divisions = Division::all();
+				$types = DivisionType::all();
+				$employeesInDivisions = EmployeeInDivision::all();
+				// var_dump(EmployeeInDivision::first()->id);die();
+
+				if ($request->method === 'GET') {
+					return (new View())->render('site.employees', ['employees' => $employees, 'divisions' => $divisions, 'types' => $types]);
+				}
+
+				if ($request->method === 'POST') {
+					$typeFilters = $request->type;
+					$divisionFilters = $request->division;
+					// foreach ($typeFilters as $typeFilter){
+					// 	var_dump($employees = Employee::where('id', EmployeeInDivision::where('division_id', Division::where('division_type_id', DivisionType::where('id', $typeFilter)
+					// 	->pluck('id')->toArray())
+					// 	->pluck('id')->toArray())
+					// 	->pluck('employee_id')->toArray())
+					// 	->get()->toArray());die();
+					// }
+					
+					foreach ($typeFilters as $typeFilter){
+							$employees = Employee::where('id', EmployeeInDivision::where('division_id', Division::where('division_type_id', DivisionType::where('id', $typeFilter)
+																		->pluck('id')->toArray())
+																		->pluck('id')->toArray())
+																		->pluck('employee_id')->toArray())
+																		->get();
+					}
+					// foreach ($divisionFilters as $divisionFilter){
+					// 	var_dump($employees = Division::where('division_type_id', $divisionFilter)
+					// 												->pluck('id')->toArray());die();
+					// }	
+					// var_dump($divisionFilters);die();
+					foreach ($divisionFilters as $divisionFilter){
+						$employees = Employee::where('id', EmployeeInDivision::where('division_id', Division::where('division_type_id', $divisionFilter)
+																	->pluck('id')->toArray())
+																	->pluck('employee_id')->toArray())
+																	->get();
+					}					
+					return (new View())->render('site.employees', ['employees' => $employees, 'divisions' => $divisions, 'types' => $types]);
+					// foreach ($filters as $filter){
+					// 	var_dump($employees = DivisionType::where('id', $filter)->pluck('id'));
+					// }die();
+					// var_dump($employees = Employee::where('id', EmployeeInDivision::where('division_id', Division::where('id', DivisionType::where('id', $request->type)))));die();
+					// var_dump($types = DivisionType::where('id', $el)->get());die();
+				}
     }
 
 		public function employeesAge(): string

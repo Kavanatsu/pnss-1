@@ -37,7 +37,7 @@ class Addresses
        
           if($validator->fails()){
             return new View('site.createAddress',
-              ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE), 'employees' => $employees, 'positions' => $positions]);
+              ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE), 'addresses' => $addresses, 'employees' => $employees]);
           }
          
           if($request->corps === ''){
@@ -65,21 +65,6 @@ class Addresses
         }
     
         return (new View())->render('site.createAddress', ['addresses' => $addresses, 'employees' => $employees]);
-
-        // if ($request->method === 'POST') {
-        //   // var_dump($request->all());die();
-        //   ;
-        //   // var_dump($request->employee_id);die();
-        //   // $fio = explode(' ', $request->employee);
-        //   Employee::where('id', $request->employee_id)
-        //             // ->where('name', $fio[1])
-        //             // ->where('patronymic', $fio[2])
-        //             ->update(
-        //   [
-        //     'address_id' => Address::orderby('id', 'desc')->first()->id
-        //   ]);
-        //   app()->route->redirect('/addresses');
-        // }
     }
 
     public function updateAddress(Request $request): string

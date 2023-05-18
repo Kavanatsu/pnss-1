@@ -22,7 +22,6 @@ header {
     width: 100%;
     background-color:rgba(0,0,0,0.7);
     height: 15%;
-    padding: 40px 0;
 }
 
 nav {
@@ -34,6 +33,9 @@ nav {
 nav > h1 {
     font-size: 2em;  
     opacity: 1;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 }
 
 .logout {
@@ -84,17 +86,15 @@ section > div > a:hover {
 	background-color: white;
 }
 
-h1 > a {
+nav > h1 > a {
 	color: rgb(214, 214, 214);
 	text-decoration: none;
 	padding: 10px;
 	border-radius: 20px;
-	width: 12%;
-	max-width: 15%;
 	transition: .3s linear;
 }
 
-h1 > a:hover {
+nav > h1 > a:hover {
 	color: white;
 }
 

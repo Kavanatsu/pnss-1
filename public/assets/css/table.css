@@ -51,6 +51,25 @@ div > h3 {
     color: black;
 }
 
+.container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+.filter {
+	background-color: rgba(0, 0, 0, .8);
+}
+
+.filter > form {
+	padding: 0 30px;
+}
+
+.filter > form > label > input {
+	margin: 0 5px;
+}
+
 table {
     font-size: 20px;
     max-width: 70%;
@@ -64,7 +83,7 @@ th {
     font-weight: normal;
     color: white;
     border-bottom: 2px solid white;
-    padding: 10px 8px;
+    padding: 10px 8px;		
 }
 
 td {

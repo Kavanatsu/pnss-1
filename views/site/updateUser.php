@@ -1,6 +1,3 @@
-<head>
-   <link rel="stylesheet" href="/pnss-1/public/assets/css/login.css">
-</head>
 <section>
 	<div class="links">
 		<a href="<?= app()->route->getUrl('/admin-panel') ?>">Назад</a>

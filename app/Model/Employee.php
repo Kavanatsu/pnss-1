@@ -21,7 +21,7 @@ class Employee extends Model
       'birthday',
       'employment_date',
       'dismissal_date',
-		'address_id',
+			'address_id',
       'position_id'
    ];
 
@@ -50,7 +50,7 @@ class Employee extends Model
 		return $average;
 	}
 
-   protected $with = ['user'];
+   protected $with = ['user', 'employeeInDivisions'];
    
    //Связь с таблицей пользователей
    public function user()
@@ -58,7 +58,7 @@ class Employee extends Model
     return $this->hasOne(User::class);
    }
    
-   //Связь с таблицей смены должности 
+   //Связь с таблицей должности 
    public function position()
    {
       return $this->belongsTo(Position::class);
@@ -70,18 +70,12 @@ class Employee extends Model
       return $this->belongsTo(Address::class);
    }
 
+ 	//Связь с таблицей работников в подразделениях
+   public function employeeInDivisions()
+   {
+    return $this->hasOne(EmployeeInDivision::class);
+   }
 
-   // //Связь с таблицей работников в подразделениях
-   // public function employeesInDivisions()
-   // {
-   //  return $this->hasMany(EmployeeInDivision::class, 'ID_employee', 'ID_employee');
-   // }
-
-   //Связь с таблицей смены должности по ID
-   // public function positionChange() 
-   // {
-   //    return $this->hasMany(PositionChange::class, 'ID_employee');
-   // }
 
    
    
